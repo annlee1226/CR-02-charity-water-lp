@@ -1,47 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity:Water – Landing</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#1a2a3a; /* darker header */
+      --accent:#ffd166; /* pill button */
+      --text:#ffffff;   /* hero text */
+      --shadow:0 6px 30px rgba(0,0,0,.35);
+      --maxw:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#111;
+    }
+    /* Top Bar */
+    .topbar{position:sticky; top:0; z-index:10; background:var(--navy); color:var(--text); height:64px; box-shadow:var(--shadow);}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+    .topbar .container{height:100%; display:flex; align-items:center; justify-content:space-between;}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px;}
+    .brand .logo{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:#ffc445; color:#222; font-size:16px; font-weight:900;}
+    .btn-pill{display:inline-block; padding:10px 16px; border-radius:9999px; background:var(--accent); color:#111; font-weight:700; text-decoration:none; transition:filter .15s ease, transform .06s ease; box-shadow:0 2px 10px rgba(0,0,0,.15)}
+    .btn-pill:hover{filter:brightness(.95)}
+    .btn-pill:active{transform:translateY(1px)}
+
+    /* Hero */
+    .hero{min-height:100vh; display:grid; place-items:center; color:var(--text); text-align:left; position:relative; overflow:hidden;}
+    .hero::before{ /* background image with dark gradient overlay */
+      content:""; position:absolute; inset:0;
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.55)),
+          url("water.jpeg") center / cover no-repeat; /* <-- replace path as needed */
+        filter:saturate(.95);
+        transform:scale(1.02); /* subtle zoom to avoid edges */
+    }
+    .hero__content{position:relative; z-index:1; max-width:500px; margin:0; padding:56px 24px 56px 48px; text-shadow:0 2px 12px rgba(0,0,0,.6); align-self:flex-start; padding-top:120px;}    
+    h1{margin:0 0 12px; font-weight:800; line-height:1.1; font-size:clamp(32px, 6vw, 56px);}    
+    .subhead{margin:0; max-width:600px; font-size:clamp(16px, 2.2vw, 22px); opacity:.98;}
+    .kicker{margin:12px 0 0 0; font-weight:700; font-size:clamp(16px, 2vw, 20px);}  
+
+    /* Footer placeholder */
+    footer{display:none;}
+
+    /* Responsive */
+    @media (max-width: 1023px){
+      .hero__content{text-align:left; padding-left:24px}
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+  <header class="topbar" role="banner">
+    <div class="container">
+      <div class="brand" aria-label="Charity:Water">
+  <span class="logo">
+    <span class="logo" aria-hidden="true">💧</span>
+  </span>
+  <span>Charity:Water</span>
+</div>
+      <nav aria-label="Primary">
+        <a class="btn-pill" href="#trial">Free Trial</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
+  <main>
+    <section class="hero" role="region" aria-label="Intro">
+      <div class="hero__content">
+        <h1>Activism that fills a well</h1>
+        <p class="subhead">With Charity: Water's 100% model and local partners, even small monthly gifts fund real projects.</p>
+        <p class="kicker">See it, share it, grow the movement.</p>
+      </div>
     </section>
+  </main>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+  <footer>
+    <small>© <span id="yr"></span> Charity:Water — demo landing page</small>
+  </footer>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -41,6 +41,24 @@ nav a {
     color: white; /* White text color */
     text-align: center; /* Center the text */
 }
+.brand .logo {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffc445;
+  color: #222;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 4px;
+}
+
+.brand .logo img {
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+}
 
 /* Style for the main heading in the hero section */
 .hero h1 {
